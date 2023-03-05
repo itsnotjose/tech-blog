@@ -1,0 +1,126 @@
+<body>
+     <style>
+body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+}
+
+.card.is-wide {
+  width: 550px;
+}
+
+.card.has-text-centered {
+  .card-header,
+  .card-content {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+}
+
+.card-header {
+  padding: 1.75rem 0;
+}
+
+.card-content {
+  padding: 3.5rem 0;
+}
+
+</style>
+    <main role="main">
+        <div class="card has-text-centered ">
+          <form id="signup-form"
+            <header class="  has-text-centered title">
+                Sign Up!
+              </header>
+          <div class="card-content ">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input id="name-signup" class="name-signup" type="name" placeholder="Name">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input id="email-signup" class="email-signup" type="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input id="password-signup" class="password-signup" type="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button id="submit" class="button is-success">
+                    Sign Up!
+                  </button>
+                </p>
+              </div>
+          </div>
+          </form>
+        </div>
+
+
+        <div class="card has-text-centered ">
+          <form id="login-form" 
+            <header class="  has-text-centered title">
+                Login!
+              </header>
+          <div class="card-content ">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input id="email-login" class="email-login" type="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input id="password-login" class="password-login" type="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button id="submit-login" class="button is-success">
+                    Login!
+                  </button>
+                </p>
+              </div>
+          </div>
+          </form>
+        </div>
+      </main>
+</body>
+
+<script src="./js/login.js"></script>
+  <script src="./js/signup.js"></script>
