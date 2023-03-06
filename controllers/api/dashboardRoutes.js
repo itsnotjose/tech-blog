@@ -3,8 +3,6 @@ const { Post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //new post
-
-
 router.post("/", withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.create({
