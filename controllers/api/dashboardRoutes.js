@@ -1,49 +1,53 @@
 const router = require("express").Router();
-const { Post } = require("../../models");
+const { Post, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//new post
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      include: [{ model: User, attributes: ["name"] }],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts); // Add this line
+    res.render("dashboard", { posts, name: req.session.name });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.post("/", withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.create({
-      title: req.body.title,
-      text: req.body.text,
-      user_id: req.body.user_id,
-    });
-    res.status(200).json(dbPostData);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+    const { title, text } = req.body;
+    const user_id = req.session.user_id;
 
-//update a post
-router.put("/update", withAuth, async (req, res) => {
-  try {
-    const dbPostUpdate = await Post.update(
-      {
-        title: req.body.title,
-        text: req.body.text,
+    const post = await Post.create({
+      title,
+      text,
+      user_id,
+    });
+
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
       },
-      {
-        where: { id: req.body.id },
-      }
-    );
-    res.status(200).json(dbPostUpdate);
+      include: [{ model: User, attributes: ["name"] }],
+    });
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    res.status(201).render("dashboard", { posts, name: req.session.name });
   } catch (error) {
-    res.status(500).json(error);
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
   }
 });
 
-//delete a post
-router.delete("/delete", withAuth, async (req, res) => {
-  try {
-    const dbPostDelete = await Post.destroy({
-      where: { id: req.body.id },
-    });
-    res.status(200).json(dbPostDelete);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+
+
+
 
 module.exports = router;

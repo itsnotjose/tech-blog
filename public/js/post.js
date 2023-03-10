@@ -21,3 +21,10 @@ const post = async (event) => {
 }
 }
 document.getElementById('postForm').addEventListener('submit', post);
+
+//delete post
+
+
+
+
+

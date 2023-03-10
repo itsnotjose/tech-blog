@@ -1,25 +1,41 @@
-
-<main>
-  <div class="card text-bg-dark mb-3 m-4 p-3">
-    <div class="card-header">
-   <h1 class="text-center">Hello {{name}}, make a post!</h1>
+<div class="card text-bg-dark mb-3 m-4 p-3">
+  <div class="card-header">
+    <h1 class="text-center">Hello {{name}}, make a post!</h1>
   </div>
-    <form id="postForm">
-<div class="form-group m-3">
-              <label for="title">Title</label>
-              <input type="text" id="title" class="form-control" required>
-            </div>
-            <div class="form-group m-3">
-              <label for="text">Text</label>
-              <input type="text" id="text" class="form-control" required>
-            </div>
-            <button id="submit" type="submit" class="btn btn-light m-3">
-              Submit
-            </button>
-    </form>
+  <form id="postForm">
+    <div class="form-group m-3">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" required>
     </div>
-</main>
+    <div class="form-group m-3">
+      <label for="text">Text</label>
+      <input type="text" id="text" class="form-control" required>
+    </div>
+    <button id="submit" type="submit" class="btn btn-light m-3">
+      Submit
+    </button>
+  </form>
+</div>
+
+{{#if posts.length}}
+  <h2 class="title m-4">Your Posts:</h2>
+  <ul>
+    {{#each posts}}
+      <div class="card text-bg-dark m-4">
+  <div class="card-body">
+    <h1 class="card-title">{{title}}</h1>
+    <p class="card-text">{{text}}</p>
+    <button id="delete" type="submit" class=" btn btn-light m-3 float-end" data-id="{{post.id}}">
+      Delete
+    </button>
+
+  </div>
+</div>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You haven't created any posts yet.</p>
+{{/if}}
 
 <script src="./js/post.js"></script>
-
 

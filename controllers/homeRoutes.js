@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
 });
 
 
+
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
