@@ -22,7 +22,6 @@
   "homepage": "https://github.com/itsnotjose/tech-blog#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
