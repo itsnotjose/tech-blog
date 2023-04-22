@@ -1,13 +1,20 @@
 const Sequelize = require('sequelize');
-const { config } = require('dotenv');
+require('dotenv').config();
 
-config();
-
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
-let sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, {
-  host: MYSQL_HOST,
-  dialect: 'mysql'
-});
+const sequelize = new Sequelize(
+  process.env.DATABASE_URL, // Use the DATABASE_URL provided by Railway
+  {
+    dialect: 'mysql',
+    protocol: 'mysql',
+    logging: true, // Set to true to log SQL queries
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Disable SSL verification for now
+      }
+    }
+  }
+);
 
 module.exports = sequelize;
 
